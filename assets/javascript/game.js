@@ -24,7 +24,17 @@ const characterFour = {
 };
 
 
+//declaring the global variables
+let chosenCharacter = undefined;
+let chosenEnemy = undefined;
+let npcCharacters = [characterOne, characterTwo, characterThree, characterFour];
 
+
+//get the index of the char in the npc char array and remove the char from the array to signal that the char has been chosen in one way or another
+function characterSelection(obj){
+    const index = npcCharacters.indexOf(obj);
+    npcCharacters.splice(index,1);
+}
 
 //adding more attack points to the passed in character variable between 0 and the character's current attack level
 function attackMultiplier(char){
