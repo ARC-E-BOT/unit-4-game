@@ -1,6 +1,6 @@
 .character{
     width: 200px;
-    height: 200px;
+    height: 223px;
     background: rebeccapurple;
     margin: 5px;
     float: left;
@@ -8,10 +8,17 @@
 }
 
 .character h4 {
-    margin: 5;
+    margin: 5px;
+    background: white;
+    padding: 4px;
 }
 
 .character-img {
     max-width: 150px;
     max-height: 150px;
+}
+
+#character-select, #character-player, #character-enemy {
+    width: 100%;
+    overflow: auto;
 }

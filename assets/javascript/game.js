@@ -39,13 +39,78 @@ let npcCharacters = [characterOne, characterTwo, characterThree, characterFour];
 
 //initialize the characters and display them on the page
 npcCharacters.forEach(char => {
+    //create new div html element for each char
     let newDiv = document.createElement("div");
     newDiv.setAttribute("character", char.name);
     newDiv.classList.add("character");
-    newDiv.innerHTML = `<h4>${char.name}</h4><img class="character-img" src="${char.img}">`;
+    newDiv.innerHTML = `<h4>${char.name}</h4><img class="character-img" src="${char.img}"><h4>Health: ${char.health}</h4>`;
+
+    //set a click event listener for each new div so the player can choose 
+    newDiv.addEventListener("click", function(){
+        chosenCharacter = char;
+        characterSelection(char);
+
+        //create new div for the character and set all classes, attribute's and innerHTML so it can be shown in the player div on the page properly
+        let playerDiv = document.createElement("div");
+        playerDiv.setAttribute("character", chosenCharacter.name);
+        playerDiv.classList.add("character");
+        playerDiv.innerHTML = `<h4>${chosenCharacter.name}</h4><img class="character-img" src="${chosenCharacter.img}"><h4 id="character-health">Health: ${chosenCharacter.health}</h4>`;
+
+        //adding the newly created character div and clearing the character-select div
+        document.getElementById("character-player").appendChild(playerDiv);
+        document.getElementById("character-select").innerHTML = "";
+
+        //once the player is setup, setup the enemy's
+        setupEnemys();
+    })
+
+    //adding the div to the page 
     document.getElementById("character-select").appendChild(newDiv);
+});
+
+
+//sets up the enemy's after the player has chosen there character
+function setupEnemys(){
+    npcCharacters.forEach(enemy => {
+        let newDiv = document.createElement("div");
+        newDiv.setAttribute("character", enemy.name);
+        newDiv.classList.add("character");
+        newDiv.innerHTML = `<h4>${enemy.name}</h4><img class="character-img" src="${enemy.img}"><h4>Health: ${enemy.health}</h4>`;
+        newDiv.addEventListener("click", function(){
+            if(chosenEnemy === undefined){
+                chosenEnemy = enemy;
+                characterSelection(chosenEnemy);
+                //create new div for the character and set all classes, attribute's and innerHTML so it can be shown in the player div on the page properly
+                let enemyDiv = document.createElement("div");
+                enemyDiv.setAttribute("character", chosenEnemy.name);
+                enemyDiv.classList.add("character");
+                enemyDiv.innerHTML = `<h4>${chosenEnemy.name}</h4><img class="character-img" src="${chosenEnemy.img}"><h4 id="enemy-health">Health: ${chosenEnemy.health}</h4>`;
+
+                //adding the newly created enemy div to the defence div and clearing the character-enemy div so it can be refreshed
+                document.getElementById("character-defence").appendChild(enemyDiv);
+                document.getElementById("character-enemy").innerHTML = "";
+
+                setupEnemys();
+            }
+        })
+        document.getElementById("character-enemy").appendChild(newDiv);
+    });
+}
+
+document.getElementById("attack").addEventListener("click", function(){
+    if(chosenCharacter !== undefined && chosenEnemy !== undefined){
+        attack(chosenCharacter, chosenEnemy);
+        updateHealthID();
+        if(chosenCharacter.health < 0){
+            document.getElementById("character-player").innerHTML = `<h1>Game over you died! your heath was: ${chosenCharacter.health}</h1>`;
+        }
+    }
 })
 
+function updateHealthID(){
+    document.getElementById("character-health").textContent = `Health: ${chosenCharacter.health}`;
+    document.getElementById("enemy-health").textContent = `Health: ${chosenEnemy.health}`;
+}
 
 //subtract the attack and counter attack from players health and enemy's health
 function attack(player, enemy){
@@ -68,6 +133,6 @@ function characterSelection(obj){
 
 //adding more attack points to the passed in character variable between 0 and the character's current attack level
 function attackMultiplier(char){
-    return char.attack + Math.floor(Math.random() * char.attack);
+    return char.attack +  char.attack;
 }
 
