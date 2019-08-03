@@ -1,0 +1,17 @@
+.character{
+    width: 200px;
+    height: 200px;
+    background: rebeccapurple;
+    margin: 5px;
+    float: left;
+    text-align: center;
+}
+
+.character h4 {
+    margin: 5;
+}
+
+.character-img {
+    max-width: 150px;
+    max-height: 150px;
+}
