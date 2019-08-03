@@ -1,6 +1,6 @@
 .character{
-    width: 200px;
-    height: 223px;
+    max-width: 150px;
+    max-height: 150px;
     background: rebeccapurple;
     margin: 5px;
     float: left;
@@ -14,11 +14,39 @@
 }
 
 .character-img {
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 75px;
+    max-height: 75px;
 }
 
 #character-select, #character-player, #character-enemy {
     width: 100%;
     overflow: auto;
 }
+
+body{
+    background: gray;
+}
+
+#fighting-arena{
+    height: 500px;
+    width: 75%;
+    background: green;
+}
+
+#tag-one{
+    float: left;
+    margin-left: 10px;
+    display: inline;
+}
+#tag-two{
+    float: right;
+    margin-right: 10px;
+    display: inline;
+}
+
+/* #character-defence{
+    float: right;
+}
+#character-player{
+    float: left;
+} */
