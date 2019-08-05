@@ -57,9 +57,10 @@ npcCharacters.forEach(char => {
         //create new div for the character and set all classes, attribute's and innerHTML so it can be shown in the player div on the page properly
         let playerDiv = createDiv(chosenCharacter, "player", ` id="character-health"`);
         playerDiv.classList.add("vs");
+        let newWideDiv = createThirdWide("player-attack", playerDiv);
 
         //adding the newly created character div and clearing the character-select div
-        arenaDiv.prepend(playerDiv);
+        arenaDiv.prepend(newWideDiv);
         selectCharacter.innerHTML = "";
 
         //once the player is setup, setup the enemy's
@@ -83,10 +84,11 @@ function setupEnemys(){
                 //create new div for the character and set all classes, attribute's and innerHTML so it can be shown in the player div on the page properly
                 selectCharacter.innerHTML = ""
                 let enemyDiv = createDiv(chosenEnemy, "defender", ` id="enemy-health"`);
-                enemyDiv.classList.add("vs")
+                enemyDiv.classList.add("vs");
+                let newWideDiv = createThirdWide("enemy-defender", enemyDiv);
 
                 //adding the newly created enemy div to the defence div and clearing the character-enemy div so it can be refreshed
-                arenaDiv.appendChild(enemyDiv);
+                arenaDiv.appendChild(newWideDiv);
                 selectCharacter.innerHTML = "";
 
                 setupEnemys();
@@ -125,7 +127,8 @@ function setupPlayArea(){
     newDiv.appendChild(swordsImg);
     newDiv.appendChild(lineBreak);
     newDiv.appendChild(attackButton);
-    arenaDiv.appendChild(newDiv)
+    let newWideDiv = createThirdWide("attack-button", newDiv);
+    arenaDiv.appendChild(newWideDiv)
 }
 
 //creates a listener on the attack button 
@@ -151,6 +154,14 @@ function createAttackListener(attackButton){
     })
 }
 
+//this creates a parent div that is 33.3% wide to make the play area look better for fighting
+function createThirdWide(id, childDiv){
+    let newWideDiv = document.createElement("div");
+    newWideDiv.classList.add("third-wide");
+    newWideDiv.id = id;
+    newWideDiv.appendChild(childDiv);
+    return newWideDiv;
+}
 
 //creates character div's so I don't have to copy and paste the same code about a million times
 function createDiv(char, id, healthID){

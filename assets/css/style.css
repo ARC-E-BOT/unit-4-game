@@ -7,6 +7,9 @@ body{
     position: relative;
 }
 
+#arena div{
+}
+
 .character{
     width: 220px;
     height: 255px;
@@ -63,14 +66,18 @@ h1 {
 }
 
 #welcome{
-    width: 50%;
     height: 40%;
-    background: gray;
+    background: url("../images/sign-texture.png");
     display:inline-block;
 }
 
 p{
-    padding: 5px;
+    font-family: 'MinecraftiaRegular'; 
+    font-weight: normal; 
+    font-style: normal;
+    color: white;
+    line-height: 140%;
+    padding: 8px;
     font-size: 18px;
 }
 
@@ -92,14 +99,31 @@ p{
     width: 220px;
     height: 255px;
     margin: 5px;
+    padding-top: 40px;
     display:inline-block;
     text-align: center;
 }
 
 .vs{
+    top: 0;
     width: 220px;
     height: 255px;
     margin: 5px;
     display:inline-block;
     text-align: center;
+}
+
+#arena, #vs, .vs, .third-wide {
+    text-align: center;
+    vertical-align: top;
+    margin: auto;
+}
+
+#arena {
+    width: 40%;
+}
+
+.third-wide {
+    float: left;
+    width: 33.3%;
 }
