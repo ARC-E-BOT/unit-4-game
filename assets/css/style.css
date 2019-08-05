@@ -15,7 +15,6 @@ body{
     display:inline-block;
     text-align: center;
     border: 5px solid rebeccapurple;
-
 }
 
 .character h4 {
@@ -33,7 +32,7 @@ body{
 
 .character-img {
     margin: 20px;
-    max-width: 150px;
+    max-width: 150px; 
     max-height: 150px;
 }
 
@@ -80,4 +79,27 @@ p{
     padding: 15px;
     font-weight: bold;
     font-size: 18px;
+}
+
+#attack{
+    margin-top: 5px; 
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#vs{
+    width: 220px;
+    height: 255px;
+    margin: 5px;
+    display:inline-block;
+    text-align: center;
+}
+
+.vs{
+    width: 220px;
+    height: 255px;
+    margin: 5px;
+    display:inline-block;
+    text-align: center;
 }
