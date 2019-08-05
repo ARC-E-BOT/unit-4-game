@@ -84,20 +84,18 @@ function setupEnemys(){
 
                 //adding the newly created enemy div to the defence div and clearing the character-enemy div so it can be refreshed
                 charDefence.appendChild(enemyDiv);
-                document.getElementById("character-enemy").innerHTML = "";
+                selectCharacter.innerHTML = "";
 
                 setupEnemys();
             }
         })
-        document.getElementById("character-enemy").appendChild(newDiv);
+        selectCharacter.appendChild(newDiv);
     });
 }
 
 document.getElementById("attack").addEventListener("click", function(){
     if(chosenCharacter !== undefined && chosenEnemy !== undefined){
         chosenCharacter.attack = attackMultiplier(chosenCharacter);
-        document.getElementById("player").classList.remove("animate");
-        document.getElementById("player").classList.add("animate");
         attack(chosenCharacter, chosenEnemy);
         updateHealthID();
         if(chosenCharacter.health < 0){
@@ -113,18 +111,20 @@ document.getElementById("attack").addEventListener("click", function(){
     }
 })
 
+//creates character div's so I don't have to copy and paste the same code about a million times
 function createDiv(char, id, healthID){
     let playerDiv = document.createElement("div");
     playerDiv.setAttribute("character", char.name);
     playerDiv.classList.add("character");
     playerDiv.id = id;
-    playerDiv.innerHTML = `<h4>${char.name}</h4><img class="character-img" src="${char.img}"><h4${healthID}>Health: ${char.health}</h4>`;
+    playerDiv.innerHTML = `<h4 id="name-text">${char.name}</h4><img class="character-img" src="${char.img}"><h4${healthID}>Health: ${char.health}</h4>`;
     return playerDiv;
 }
 
+//updates the health of the player and enemy so that the player can see what is going on
 function updateHealthID(){
-    document.getElementById("character-health").textContent = `Health: ${chosenCharacter.health}`;
-    document.getElementById("enemy-health").textContent = `Health: ${chosenEnemy.health}`;
+    document.getElementById("character-health").textContent = `${chosenCharacter.name} Health: ${chosenCharacter.health}`;
+    document.getElementById("enemy-health").textContent = `${chosenEnemy.name} Health: ${chosenEnemy.health}`;
 }
 
 //subtract the attack and counter attack from players health and enemy's health

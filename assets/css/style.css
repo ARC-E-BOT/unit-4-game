@@ -1,52 +1,83 @@
+body{
+    background: url("../images/boxing-ring.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
+    position: relative;
+}
+
 .character{
-    max-width: 150px;
-    max-height: 150px;
-    background: rebeccapurple;
+    width: 220px;
+    height: 255px;
+    background: url("../images/stone.jpg");
     margin: 5px;
-    float: left;
+    display:inline-block;
     text-align: center;
+    border: 5px solid rebeccapurple;
+
 }
 
 .character h4 {
-    margin: 5px;
-    background: white;
+    background: gray;
+    color: #0d45be;
     padding: 4px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#name-text {
+    font-size: 32px;
+    padding: 1px;
 }
 
 .character-img {
-    max-width: 75px;
-    max-height: 75px;
+    margin: 20px;
+    max-width: 150px;
+    max-height: 150px;
 }
 
 #character-select, #character-player, #character-enemy {
-    width: 100%;
+    margin: auto;
+    width: 75%;
+    overflow: auto;
+    text-align:center;
+}
+
+#title{
+    margin: auto;
+    width: 50%;
     overflow: auto;
 }
 
-body{
-    background: gray;
-}
-
-#fighting-arena{
-    height: 500px;
+#arena{
+    margin: auto;
     width: 75%;
-    background: green;
+    overflow: auto;
+    text-align:center;
 }
 
-#tag-one{
-    float: left;
-    margin-left: 10px;
-    display: inline;
-}
-#tag-two{
-    float: right;
-    margin-right: 10px;
-    display: inline;
+h1 {
+    padding: 5px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-/* #character-defence{
-    float: right;
+#welcome{
+    width: 50%;
+    height: 40%;
+    background: gray;
+    display:inline-block;
 }
-#character-player{
-    float: left;
-} */
+
+p{
+    padding: 5px;
+    font-size: 18px;
+}
+
+#ready-to-play{
+    margin-top: 5px; 
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
