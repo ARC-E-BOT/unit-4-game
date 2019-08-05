@@ -7,9 +7,6 @@ body{
     position: relative;
 }
 
-#arena div{
-}
-
 .character{
     width: 220px;
     height: 255px;
@@ -41,7 +38,7 @@ body{
 
 #character-select, #character-player, #character-enemy {
     margin: auto;
-    width: 75%;
+    width: 90%;
     overflow: auto;
     text-align:center;
 }
@@ -66,7 +63,8 @@ h1 {
 }
 
 #welcome{
-    height: 40%;
+    height: 50%;
+    width: 100%;
     background: url("../images/sign-texture.png");
     display:inline-block;
 }
@@ -120,7 +118,7 @@ p{
 }
 
 #arena {
-    width: 40%;
+    width: 60%;
 }
 
 .third-wide {
