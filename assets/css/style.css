@@ -155,3 +155,19 @@ p{
     color: paleturquoise;
     font-size: 40px;
 }
+
+.stat-box{
+    position: absolute;
+    width: 125px;
+    height: 150px;
+    background: rgb(51, 51, 51, 0.4);
+    top: 40%;    
+}
+
+h3{
+    padding: 5px;
+    font-family: 'MinecraftiaRegular'; 
+    font-weight: normal; 
+    font-style: normal;
+    color: white;
+}
