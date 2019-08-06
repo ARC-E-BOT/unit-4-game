@@ -36,6 +36,9 @@ let chosenCharacter = undefined;
 let chosenEnemy = undefined;
 let isPlayable = false;
 let npcCharacters = [characterOne, characterTwo, characterThree, characterFour];
+let wins = 0;
+let losses = 0;
+let kills = 0;
 
 
 //call elements from the document into global const variables 
@@ -172,6 +175,9 @@ function createAttackListener(attackButton){
 
             //if the character's health is less than or equals 0 meaning you died!
             if(chosenCharacter.health <= 0){
+                //add one to the losses
+                losses++;
+
                 //create a new div to replace the arena that signals the player has died
                 let newDiv = document.createElement("div");
                 newDiv.innerHTML = `<h1>Game over you died! your heath was: ${chosenCharacter.health}</h1>`;
@@ -192,10 +198,16 @@ function createAttackListener(attackButton){
                 //appending the button to the new div and then appending the new div to the arena
                 newDiv.appendChild(newButton);
                 arenaDiv.appendChild(newDiv);
+
+                //update the score-box
+                setScoreBox();
                 
             }
             //if the Enemy's health is less than or equals 0 meaning you killed the enemy!
             else if(chosenEnemy.health <= 0){
+                //add one to the kills counter update the score-box
+                kills++;
+                setScoreBox();
 
                 //get the enemy div and remove it if they have died
                 const defenderDiv = document.getElementById("defender");
@@ -207,6 +219,9 @@ function createAttackListener(attackButton){
 
                 //if no characters are in the array you win!
                 if(npcCharacters.length === 0){
+                    //add one to the wins counter
+                    wins++;
+
                     let newDiv = document.createElement("div");
                     newDiv.innerHTML = `<h1>Game over, YOU WIN! your heath was: ${chosenCharacter.health}</h1>`;
                     newDiv.className = "death-message";
@@ -226,6 +241,10 @@ function createAttackListener(attackButton){
                     //appending the button to the new div and then appending the new div to the arena
                     newDiv.appendChild(newButton);
                     arenaDiv.appendChild(newDiv);
+
+                    //set the score-box
+                    setScoreBox();
+
                 }
             }
         }
@@ -377,4 +396,23 @@ function resetNpc(){
     characterFour.health = 160;
     characterFour.attack = 6;
     characterFour.counterAttack = 20;
+}
+
+//update the score box
+function setScoreBox(){
+    //this shows the score box
+    const scoreBoxHTML = document.getElementById("stat-box");
+    scoreBoxHTML.className = "stat-box";
+
+    //this sets the wins text with the amount of wins that have occurred 
+    const winsTextHTML = document.getElementById("wins-text");
+    winsTextHTML.textContent  = `Wins: ${wins}`;
+    
+    //this sets the losses text with the amount of losses that have occurred 
+    const lossesTextHTML = document.getElementById("losses-text");
+    lossesTextHTML.textContent = `Losses: ${losses}`;
+    
+    //this sets the kills text with the amount of kills that have occurred 
+    const killsTextHTML = document.getElementById("kills-text");
+    killsTextHTML.textContent = `Kills: ${kills}`;
 }
