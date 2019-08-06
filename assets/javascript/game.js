@@ -56,6 +56,14 @@ document.getElementById("ready-to-play").addEventListener("click", function(){
     isPlayable = true;
 })
 
+//add click event to the "Random" button
+document.getElementById("hard-Mode").addEventListener("click", function(){
+    //sets up the play area and sets the is playable lock to true so the user may choose a character 
+    randomizeStats();
+    setupPlayArea();
+    isPlayable = true;
+})
+
 
 //initialize the characters and display them on the page
 function loadNPCs(){
@@ -290,14 +298,27 @@ function createWelcomeMenu(){
 
     //create the paragraph html element and set its text 
     let newParagraph = document.createElement("p");
-    newParagraph.innerText = "How to play, click on the character that you would like to be your avatar for the rest of the game. any avatars left will become your enemy's and you have to defeat all of them to win the game. once you click the ready to play button below you will see your attack button, choose your opponent and get playing!!";
+    newParagraph.innerHTML = "How to play, click on the character that you would like to be your avatar for the rest of the game. any avatars left will become your enemy's and you have to defeat all of them to win the game. once you click the ready to play button below you will see your attack button, choose your opponent and get playing!! <br><br>  Random Mode is like the main game but all stats are randomized between and 900";
     
     //create the play button set its text to "Ready To Play!" and its id as well as add a click listener for it
     let newPlayButton = document.createElement("button");
     newPlayButton.innerText = "Ready To Play!";
     newPlayButton.id = "ready-to-play";
+    newPlayButton.className = 'buttons';
     newPlayButton.addEventListener("click", function(){
         //setting up the play area and set is playable to true so the user may choose a character
+        setupPlayArea();
+        isPlayable = true;
+    })
+
+    //create the play button set its text to "Ready To Play!" and its id as well as add a click listener for it
+    let newHardPlayButton = document.createElement("button");
+    newHardPlayButton.innerText = "Random Mode?";
+    newHardPlayButton.id = "hard-Mode";
+    newHardPlayButton.className = 'buttons';
+    newHardPlayButton.addEventListener("click", function(){
+        //setting up the play area and set is playable to true so the user may choose a character and randomizing the stats
+        randomizeStats();
         setupPlayArea();
         isPlayable = true;
     })
@@ -306,6 +327,7 @@ function createWelcomeMenu(){
     newDiv.appendChild(newHOne);
     newDiv.appendChild(newParagraph);
     newDiv.appendChild(newPlayButton);
+    newDiv.appendChild(newHardPlayButton);
     return newDiv;
 }
 
@@ -326,7 +348,7 @@ function createThirdWide(id, childDiv){
 
 
 //creates character div's so I don't have to copy and paste the same code about a million times
-function createDiv(char, id, healthID,attack){
+function createDiv(char, id, healthID){
     //create the player div and setting the attribute of the character's name
     let playerDiv = document.createElement("div");
     playerDiv.setAttribute("character", char.name);
@@ -375,7 +397,7 @@ function attackMultiplier(char){
     return char.attack + 6;
 }
 
-
+//reset all the stats of the npc characters to default stats
 function resetNpc(){
     //resetting CharacterOne's stats
     characterOne.health = 130;
@@ -415,4 +437,18 @@ function setScoreBox(){
     //this sets the kills text with the amount of kills that have occurred 
     const killsTextHTML = document.getElementById("kills-text");
     killsTextHTML.textContent = `Kills: ${kills}`;
+}
+
+//this randomizes all stats of all of the npc characters 
+function randomizeStats(){
+    //resetting all character's stats
+    for(let i = 0; i<npcCharacters.length;i++){
+        npcCharacters[i].health = Math.floor(Math.random() * 900)+1;
+        npcCharacters[i].attack =  Math.floor(Math.random() * 900)+1;
+        npcCharacters[i].counterAttack =  Math.floor(Math.random() * 900)+1;
+    }
+    
+    //reload npc's
+    selectCharacter.innerHTML = "";
+    loadNPCs();
 }
