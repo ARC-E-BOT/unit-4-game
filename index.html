@@ -4,20 +4,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Minecraft RPG</title>
+
+    <!-- calling the fonts used on the page -->
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/minecraftia" type="text/css"/>
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/minecraft" type="text/css"/>
+
+    <!-- linking the sylesheets -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <div class="content">
+        <!-- location of the title -->
         <div id="title">
             <h1 class="title">Minecraft RPG</h1>
         </div>
+        <!-- the character selection div that holds the characters for selection and display -->
         <div id="character-select">
         </div>
         <br>
+        <!-- below is the arena this will change contents based on what is happening in game by default it displays the welcome menu -->
         <div id="arena">
+            <!-- welcomes the user to the game and gives them a rundown on how the game works -->
             <div id="welcome">
                 <h1 class="title">Welcome to the Minecraft RPG!</h1>
                 <p>
@@ -27,6 +35,7 @@
                 <button id="hard-Mode" class="buttons">Random Mode?</button>
             </div>
         </div>
+        <!-- this displays the stats of the user after they have killed something and/or died but this only pops up after that has has happened -->
         <div id="stat-box">
             <h3 id="wins-text"></h3>
             <h3 id="losses-text"></h3>
@@ -35,6 +44,7 @@
         </div>
     </div>
     
+    <!-- calling the javascript into the page to make the game work -->
     <script src="./assets/javascript/game.js"></script>
 </body>
 </html>
