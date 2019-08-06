@@ -1,4 +1,4 @@
-### Minecraft RPG (unit-4-game)
+# Minecraft RPG (unit-4-game)
 
  How to play, click on the character that you would like to be your avatar for the rest of the game. any avatars left will become your enemy's and you have to defeat all of them to win the game. once you click the ready to play button below you will see your attack button, choose your opponent and get playing!!
  
