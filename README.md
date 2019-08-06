@@ -20,5 +20,5 @@ https://arc-e-bot.github.io/unit-4-game/
 - [x] Get UI to look good
 	- [x] Add Css to help better UI
 	- [x] Get Minecraft related font
-- [ ] Add score keeping
+- [x] Add score keeping
 - [ ] Add Random mode
