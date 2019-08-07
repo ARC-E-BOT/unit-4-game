@@ -35,6 +35,7 @@ const characterFour = {
 let chosenCharacter = undefined;
 let chosenEnemy = undefined;
 let isPlayable = false;
+let isRandomMode = false;
 let npcCharacters = [characterOne, characterTwo, characterThree, characterFour];
 let wins = 0;
 let losses = 0;
@@ -266,6 +267,7 @@ function endgame(){
     chosenCharacter = undefined;
     chosenEnemy = undefined;
     isPlayable = false;
+    isRandomMode = false;
 
     //empty the arena and the selectCharacter Div
     arenaDiv.innerHTML = "";
@@ -358,7 +360,11 @@ function createDiv(char, id, healthID){
     playerDiv.id = id;
 
     //setting the inner html of the new div we just made and returning the new div so it can be worked with outside the function
-    playerDiv.innerHTML = `<h4 id="name-text">${char.name}</h4><img class="character-img" src="${char.img}"><h4${healthID}>HP: ${char.health} / Atk: ${char.attack}</h4>`;
+    if (chosenCharacter === undefined || chosenCharacter === char) {
+        playerDiv.innerHTML = `<h4 id="name-text">${char.name}</h4><img class="character-img" src="${char.img}"><h4${healthID}>HP: ${char.health} / Atk: ${char.attack}</h4>`;
+    } else {
+        playerDiv.innerHTML = `<h4 id="name-text">${char.name}</h4><img class="character-img" src="${char.img}"><h4${healthID}>HP: ${char.health} / Atk: ${char.counterAttack}</h4>`;
+    }
     return playerDiv;
 }
 
@@ -394,6 +400,8 @@ function characterSelection(obj){
 
 //adding more attack points to the passed in character variable between 0 and the character's current attack level
 function attackMultiplier(char){
+    // if randomMode is active add a random number between 0 and 50 to the attack because LOL
+    if(isRandomMode) return char.attack + Math.floor(Math.random() * 50);
     return char.attack + 6;
 }
 
@@ -441,6 +449,7 @@ function setScoreBox(){
 
 //this randomizes all stats of all of the npc characters 
 function randomizeStats(){
+    isRandomMode = true;
     //resetting all character's stats
     for(let i = 0; i<npcCharacters.length;i++){
         npcCharacters[i].health = Math.floor(Math.random() * 900)+1;

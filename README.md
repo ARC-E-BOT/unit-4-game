@@ -24,3 +24,4 @@ https://arc-e-bot.github.io/unit-4-game/
 	- [x] Get Minecraft related font
 - [x] Add score keeping
 - [x] Add Random mode
+    - [x] Fix visual issue where player attack showed up wrong after selection
