@@ -15,7 +15,7 @@ HP - this is the heath left for the character
 Atk - this is the attacking power of the plater or opponent 
  
 # Play Below
-https://arc-e-bot.github.io/unit-4-game/
+https://coop25.github.io/unit-4-game/
 
 # ToDo List (Future)
 - [x] Get game Logic done
